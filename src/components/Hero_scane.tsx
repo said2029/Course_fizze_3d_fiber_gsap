@@ -60,7 +60,7 @@ export default function Hero_scane({ }: Props) {
                 duration:2
             },
             scrollTrigger:{
-                scrub:1.3,
+                scrub:true,
                 trigger:".hero",
                 start:"top top",
                 end:"bottom bottom"

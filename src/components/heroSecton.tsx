@@ -7,12 +7,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Hero_scane from "./Hero_scane";
 import { View } from "@react-three/drei";
 import Header from "./Header";
+import { Bubbles } from "./Bubbles";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 type Props = {};
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function HeroSecton({}: Props) {
+  const isDesktop = useMediaQuery("(min-width:768px)", true);
   useGSAP(() => {
     const introTi = gsap.timeline();
     introTi
@@ -44,7 +47,7 @@ export default function HeroSecton({}: Props) {
     // scroll trigger
     const scrollTi = gsap.timeline({
       scrollTrigger: {
-        markers: true,
+        trigger:".hero",
         start: "top top",
         end: "bottom bottom",
         scrub: 1.4,
@@ -73,11 +76,14 @@ export default function HeroSecton({}: Props) {
       });
   });
   return (
-    <div className="hero  relative">
+    <div className="hero relative">
       <Header />
-      <View className='sticky w-screen h-screen top-0 pointer-events-none -mt-[100vh]'>
-        <Hero_scane/>
-      </View>
+      {isDesktop && (
+        <View className="pointer-events-none sticky top-0 -mt-[100vh] h-screen w-screen">
+          <Hero_scane />
+          <Bubbles count={300} repeat={true} speed={2} />
+        </View>
+      )}
 
       <div className="flex w-full flex-col items-center justify-center gap-11">
         <h1 className="hero-header-word text-center font-sans text-8xl font-extrabold uppercase leading-[.8] text-orange-500 md:text-[9rem] lg:text-[10rem]">
@@ -95,11 +101,10 @@ export default function HeroSecton({}: Props) {
           </button>
         </div>
       </div>
-     
 
-      <div className="text-side-hero grid grid-cols-1 text-center md:grid-cols-2 md:text-start">
-        <div className="order-2 space-y-3 z-[40] md:order-1">
-          <h2 className="text-7xl font-sans font-semibold text-sky-950 uppercase md:text-[3rem]">
+      <div className="text-side-hero px-14 my-96 grid grid-cols-1 text-center md:grid-cols-2 md:text-start">
+        <div className="z-[40] order-2 space-y-3 md:order-1">
+          <h2 className="font-sans text-7xl font-semibold uppercase text-sky-950 md:text-[3rem]">
             <TextSplitter text="Try all five flavors" />
           </h2>
           <p className="text-sky-900">
