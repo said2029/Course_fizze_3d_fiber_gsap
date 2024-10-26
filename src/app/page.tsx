@@ -1,15 +1,20 @@
-
+import Carusal from "@/components/carusal";
 import HeroSecton from "@/components/heroSecton";
 import SkyDive from "@/components/SkyDive";
+import SodaInfo from "@/components/SodaInfo";
 import dynamic from "next/dynamic";
-const ViewCanves=dynamic(()=>import("@/components/viewCanves"),{ssr:false})
+const ViewCanves = dynamic(() => import("@/components/viewCanves"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
-    <main className="">
+    <main>
       <HeroSecton />
-      <SkyDive/>
-      <ViewCanves/>
+      <SkyDive />
+      <Carusal />
+      <SodaInfo />
+      <ViewCanves />
     </main>
   );
 }

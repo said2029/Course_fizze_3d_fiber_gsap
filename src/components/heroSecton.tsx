@@ -69,7 +69,7 @@ export default function HeroSecton({}: Props) {
         duration: 3,
         rotateZ: 30,
         ease: "back.out(3)",
-      })
+      },"+=3")
       .from(".text-side-hero p", {
         y: 20,
         opacity: 0,

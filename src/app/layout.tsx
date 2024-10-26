@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import { ReactLenis } from "@/utils/lenis";
 const Alpino = localFont({
   src: "../../public/fonts/Alpino-Variable.woff",
   variable: "--font-alpino",
@@ -21,9 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Alpino.variable} antialiased overflow-x-hidden bg-yellow-400`}>
-        {children}
+      <ReactLenis root>
+        <body
+          className={`${Alpino.variable} overflow-x-hidden bg-yellow-400 antialiased`}
+        >
+          {children}
         </body>
+      </ReactLenis>
     </html>
   );
 }

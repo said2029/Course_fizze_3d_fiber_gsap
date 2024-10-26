@@ -3,7 +3,6 @@ import {
   Cloud,
   Clouds,
   Environment,
-  OrbitControls,
   Text,
   View,
 } from "@react-three/drei";
